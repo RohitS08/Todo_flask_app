@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block styling %}
+  .note{
+    text-align:center;
+    border-bottom:1px solid black;
+    margin-top:20px;
+    color:red
+  }
+  .note button{
+    float:right;
+    position:relative;
+    bottom:10px;
+    border:1px solid black;
+    padding:0px 5px
+  }
+  form{
+    text-align:center;
+  }
+  textarea{
+    margin:auto 0;
+  }
+  form button{
+    background-color:#99d6ff;
+    width:60px;
+    height:40px;
+    border-radius:10%;
+    color:white;
+  }
+{% endblock %}
+
+{% block content %}
+
+  {% for notes in user.note %}
+    <div class="note">
+      {{notes.data}}
+      <button onClick="deleteNote({{notes.id}})"><b>&times</b></button>
+    </div>
+  {% endfor %}
+  
+  <form method='POST'>
+    <textarea type="text" name="note" ></textarea></textarea>
+    <br />
+    <button type="submit"><strong>Add</strong></button>
+  </form>
+{% endblock %}
